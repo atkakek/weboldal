@@ -1,0 +1,45 @@
+body{
+    background: linear-gradient(#212529, #4b0394);
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0px; 
+}
+
+.card{
+    max-width: 90%;
+    max-height: 90%;
+    border: #4b0394 2px solid;
+}
+
+.btn{
+    background-color: #4b0394;
+    color: white;
+}
+
+.genres{
+    color: white;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.genres-container{
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    border-bottom:#4b0394 1px solid;
+    margin-bottom: 30px;
+}
+
+.like{
+    display: flex;
+    justify-content: space-between;
+}
+
+.closeButton{
+    background-color: #4b0394;
+    color: white;
+}

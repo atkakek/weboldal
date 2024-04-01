@@ -1,0 +1,28 @@
+body{
+    background: linear-gradient(#212529, #4b0394);
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.loginPanel{
+    margin: 0 auto;
+    width: 500px;
+    height: 700px;
+    background: linear-gradient(rgb(40, 32, 58), rgb(45, 27, 73));
+    border: #4b0394 2px solid;
+    text-align: center;
+}
+
+h1{
+    color: white;
+}
+form{
+    color: white;
+}
+
+.btn{
+    color: white;
+    background-color: #212529;
+}

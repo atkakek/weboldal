@@ -1,0 +1,23 @@
+body{
+    background: linear-gradient(#212529, #4b0394);
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0px; 
+}
+
+.card{
+    max-width: 90%;
+    max-height: 90%;
+    border: #4b0394 2px solid;
+}
+
+.btn{
+    background-color: #4b0394;
+    color: white;
+}
+
+.remove{
+    display: flex;
+    justify-content: end;
+}
