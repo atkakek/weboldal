@@ -1,6 +1,17 @@
 <?php 
   $accc = $_SESSION['name'];
   echo '<script> var sessionStarted = ' . (isset($_SESSION['session_started']) && !empty($_SESSION['name']) ? 'true' : 'false') . '; </script>';
+
+?>
+
+<?php
+require_once "../server/connectdb.php";
+$accc = $_SESSION['name'];
+$sql = "SELECT likedmovies.userName, COUNT(likedmovies.movieId) as darab FROM likedmovies WHERE likedmovies.userName ='{$accc}'";
+$stmt = $conn -> query( $sql );
+$data = $stmt -> fetchAll();
+$darab = $data[0]['darab'];
+echo json_encode($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,13 +39,11 @@ let acc = "<?php echo $accc?>";
 console.log(acc);
 document.getElementById('welcome').innerHTML = `Hello, ${acc}`;
 
-/*if (sessionStarted) {
-            console.log("A session elindult.");
-        } else {
-            console.log("A session még nem indult el.");
-        }*/
+const darab = <?php echo $darab;?>;
+console.log(darab);
 
-    getData('../server/Favorite.php', renderCards);
+if (darab > 0) {
+  getData('../server/Favorite.php', renderCards);
     
     function renderCards(data) {
         console.log(data);
@@ -45,7 +54,7 @@ document.getElementById('welcome').innerHTML = `Hello, ${acc}`;
           
             document.getElementById('movie-row').innerHTML += 
             `
-            <div class="col-3">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
               <div class="card text-bg-dark p-2" style="width: 100%; max-height: 100%">
                 <img src="${item.poster_path}" class="card-img-top" alt="${item.title}">
               <div class="card-body text-md-start">
@@ -90,6 +99,11 @@ document.getElementById('welcome').innerHTML = `Hello, ${acc}`;
     });
 }
 
+}else{
+  document.getElementById('welcome').innerHTML = `You have no favorites yet.`;
+}
+
+    
 
     
 </script>

@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
-                <div class="loginPanel">
+                <div class="loginPanel mx-auto">
                     <h1 class="my-3">Login/Sign up Panel</h1> 
                     <form class="mx-5">
                         <div class="mb-3">
@@ -27,11 +27,8 @@
             </div>
         </div>
     </div>
-</body>
-</html>
 
 <script>
-
     function info(){
         let username = document.getElementById("name").value
         let password = document.getElementById("password").value
@@ -56,3 +53,6 @@
 
 
 </script>
+</body>
+</html>
+

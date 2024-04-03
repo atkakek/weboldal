@@ -1,9 +1,10 @@
+
 body{
-    background: linear-gradient(#212529, #4b0394);
-    background-repeat: no-repeat;
-    overflow-x: hidden;
-    margin: 0 auto;
     padding: 0px;
+    margin: 0px;
+    background: linear-gradient(#212529, #4b0394);
+    overflow-x: hidden;
+ 
 }
 
 .loginPanel{

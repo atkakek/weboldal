@@ -127,7 +127,7 @@ function fetchMovies(selectedGenres = []) {
         let movieTitle = title.replace(/['"]/g, '');
 
         const card = document.createElement('div');
-        card.classList.add('col-3');
+        card.classList.add('col-sm-12', 'col-md-6', 'col-lg-4', 'col-xl-3');
         card.innerHTML = `
           <div class="card text-bg-dark p-2" style="width: 100%; max-height: 100%">
             <img src="${imageUrl}" class="card-img-top" alt="${movieTitle}">
@@ -171,7 +171,7 @@ function fetchGenres() {
         const { id, name } = genre;
 
         const listItem = document.createElement('div');
-        listItem.classList.add('form-check', 'p-1', 'col-1', 'mx-4');
+        listItem.classList.add('form-check', 'p-1', 'mx-4', 'col-sm-1', 'col-md-3', 'col-lg-2', 'col-xl-1');
 
         listItem.innerHTML = `
           <div>
