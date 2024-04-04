@@ -1,12 +1,10 @@
-<?php 
-  $accc = $_SESSION['name'];
-  echo '<script> var sessionStarted = ' . (isset($_SESSION['session_started']) && !empty($_SESSION['name']) ? 'true' : 'false') . '; </script>';
-
-?>
-
 <?php
 require_once "../server/connectdb.php";
-$accc = $_SESSION['name'];
+if (empty($_SESSION['name'])) {
+  $accc = "";
+} else {
+  $accc = $_SESSION['name'];
+}
 $sql = "SELECT likedmovies.userName, COUNT(likedmovies.movieId) as darab FROM likedmovies WHERE likedmovies.userName ='{$accc}'";
 $stmt = $conn -> query( $sql );
 $data = $stmt -> fetchAll();
@@ -28,16 +26,10 @@ echo json_encode($data);
 
 <div class="container" id="movie-list">
   <div class="row text-center" id="movie-row">
-    <h1 class="text-white mb-3" id="welcome"></h1>
   </div>
 </div>
 
 <script>
-
-
-let acc = "<?php echo $accc?>";
-console.log(acc);
-document.getElementById('welcome').innerHTML = `Hello, ${acc}`;
 
 const darab = <?php echo $darab;?>;
 console.log(darab);
@@ -100,7 +92,7 @@ if (darab > 0) {
 }
 
 }else{
-  document.getElementById('welcome').innerHTML = `You have no favorites yet.`;
+  window.location.href = "./main.php";
 }
 
     

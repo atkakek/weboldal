@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-6">
                 <div class="loginPanel mx-auto">
@@ -26,6 +26,12 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+        <footer class="py-4 text-center bg-dark w-100 h-100 text-light" >
+            <p>&copy by Kiszel Attila</p>
+        </footer>
     </div>
 
 <script>
