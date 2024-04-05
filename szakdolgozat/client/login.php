@@ -28,11 +28,11 @@
         </div>
     </div>
 
-    <div class="container">
-        <footer class="py-4 text-center bg-dark w-100 h-100 text-light" >
-            <p>&copy by Kiszel Attila</p>
-        </footer>
-    </div>
+<div class="container">
+    <footer class="py-4 text-center bg-dark w-100 h-100 text-light" >
+        <p>&copy by Kiszel Attila</p>
+    </footer>
+</div>
 
 <script>
     function info(){
@@ -43,19 +43,19 @@
         );
     }
 
-    function done(e){
-        e.preventDefault();
-        const myFormData = new FormData(document.querySelector('form'))
-        let configObj = {
-            method: 'POST',
-            body: myFormData
-        }
-        postData('../server/addUser.php', renderResult, configObj);
+function done(e){
+    e.preventDefault();
+    const myFormData = new FormData(document.querySelector('form'))
+    let configObj = {
+        method: 'POST',
+        body: myFormData
+    }
+    postData('../server/addUser.php', renderResult, configObj);
         
-    }
-    function renderResult(data) {
-        console.log(data);
-    }
+}
+function renderResult(data) {
+    console.log(data);
+}
 
 
 </script>

@@ -28,3 +28,4 @@ async function deleteData(url, id) {
         console.error('Error deleting movie:', response.status);
     }
 }
+

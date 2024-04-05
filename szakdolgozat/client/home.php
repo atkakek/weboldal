@@ -19,36 +19,35 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
+  <div class="row">
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content bg-dark text-white">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div id="poster" class="col-md-6"></div>
-            <div class="col-md-6 ms-auto"  id="movieInfo">
-              <p></p><br>
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div id="poster" class="col-md-6"></div>
+                <div class="col-md-6 ms-auto"  id="movieInfo">
+                  <p></p><br>
+                </div>
+            </div>
+            <div class="row" id="popularity" class="col-md-2">
+              <p></p>
             </div>
           </div>
-          <div class="row" id="popularity" class="col-md-2">
-            <p></p>
+    </div>
+          <div class="modal-footer">
+            <button type="button" class="btn closeButton" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn closeButton" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
-    </div>
-</div>
-
 
 <div class="container" id="movie-list">
   <div class="row" id="movie-row"></div>
@@ -61,28 +60,27 @@
 
 
 function showModal(button) {
-        let movieid = button.getAttribute("data-movieid");
-        console.log(movieid);
-
-        const options = {
-          method: 'GET',
-          headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNDA1ZTNlMzY4YTNhYzlmMDM5ZWMwYjMyODQ4YjdiOSIsInN1YiI6IjY1YWU0NGFmNTQ0YzQxMDBhZTI0ZjBiOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FobF9qy1qBiHfiYbaw8yi2g2wzQs8R-YGAJ96W-7g_k'
-          }
-        };
-        fetch(`https://api.themoviedb.org/3/movie/${movieid}`, options)
+  let movieid = button.getAttribute("data-movieid");
+  console.log(movieid);
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNDA1ZTNlMzY4YTNhYzlmMDM5ZWMwYjMyODQ4YjdiOSIsInN1YiI6IjY1YWU0NGFmNTQ0YzQxMDBhZTI0ZjBiOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FobF9qy1qBiHfiYbaw8yi2g2wzQs8R-YGAJ96W-7g_k'
+      }
+    };
+  fetch(`https://api.themoviedb.org/3/movie/${movieid}`, options)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+    console.log(data);
       
-      console.log(data.title);
-      const modalPoster = `https://image.tmdb.org/t/p/w300${data.poster_path}`;
+    console.log(data.title);
+    const modalPoster = `https://image.tmdb.org/t/p/w300${data.poster_path}`;
       
-      document.getElementById('modalTitle').innerHTML = data.title
-      document.getElementById('movieInfo').innerHTML = data.overview
-      document.getElementById('popularity').innerHTML = "Popularity: " + data.popularity
-      document.getElementById('poster').innerHTML = `<img src="${modalPoster}" class="img-fluid" id="poster">`
+    document.getElementById('modalTitle').innerHTML = data.title
+    document.getElementById('movieInfo').innerHTML = data.overview
+    document.getElementById('popularity').innerHTML = "Popularity: " + data.popularity
+    document.getElementById('poster').innerHTML = `<img src="${modalPoster}" class="img-fluid" id="poster">`
 
     });
   }
@@ -168,21 +166,21 @@ function fetchGenres() {
       const genreCheck = document.querySelector("#genre-row");
 
       genres.forEach(genre => {
-        const { id, name } = genre;
+      const { id, name } = genre;
 
-        const listItem = document.createElement('div');
-        listItem.classList.add('form-check', 'p-1', 'mx-4', 'col-sm-1', 'col-md-3', 'col-lg-2', 'col-xl-1');
+      const listItem = document.createElement('div');
+      listItem.classList.add('form-check', 'p-1', 'mx-4', 'col-sm-1', 'col-md-3', 'col-lg-2', 'col-xl-1');
 
-        listItem.innerHTML = `
-          <div>
-            <input class="form-check-input" type="checkbox" value="${id}" id="genre-${id}" onchange="fetchMovies(getSelectedGenres())">
-            <label class="form-check-label" for="genre-${id}">
-              ${name}
-            </label>
-          </div>
-        `;
+      listItem.innerHTML = `
+        <div>
+          <input class="form-check-input" type="checkbox" value="${id}" id="genre-${id}" onchange="fetchMovies(getSelectedGenres())">
+          <label class="form-check-label" for="genre-${id}">
+            ${name}
+           </label>
+        </div>
+      `;
 
-        genreCheck.appendChild(listItem);
+      genreCheck.appendChild(listItem);
       });
       
       // filmek megjelenitese szures eseten
@@ -194,26 +192,26 @@ function fetchGenres() {
 // mufajok megjelenitese az oldal betoltesekor
 fetchGenres();
 
-      function addFavorite(objString) {
-        var obj = eval(objString);
-        console.log(obj[0], obj[1], obj[2], obj[3]);
-        console.log(obj[2], "test");
-        let myFormData = new FormData();
-        myFormData.append('id', obj[0])
-        myFormData.append('title', obj[1])
-        myFormData.append('overview', obj[2])
-        myFormData.append('poster_path', obj[3]);
+function addFavorite(objString) {
+  var obj = eval(objString);
+  console.log(obj[0], obj[1], obj[2], obj[3]);
+  console.log(obj[2], "test");
+  let myFormData = new FormData();
+  myFormData.append('id', obj[0])
+  myFormData.append('title', obj[1])
+  myFormData.append('overview', obj[2])
+  myFormData.append('poster_path', obj[3]);
 
-        let configObj = {
-            method: 'POST',
-            body: myFormData
-        }
-        postData('../server/addFavorite.php', renderResult, configObj);
+  let configObj = {
+    method: 'POST',
+    body: myFormData
+  }
+  postData('../server/addFavorite.php', renderResult, configObj);
         
-    }
-    function renderResult(data) {
-        console.log(data.msg);
-    }
+}
+function renderResult(data) {
+  console.log(data.msg);
+}
 
       
 

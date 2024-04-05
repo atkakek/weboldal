@@ -36,7 +36,6 @@ console.log(darab);
 
 if (darab > 0) {
   getData('../server/Favorite.php', renderCards);
-    
     function renderCards(data) {
         console.log(data);
         console.log(data.movieId);
@@ -70,7 +69,6 @@ if (darab > 0) {
     let idk = movieId;
     console.log("remove" + idk);
     
-    // Send an HTTP request to your PHP script
     fetch(`../server/removeFav.php?idk=${idk}`, {
         method: 'DELETE'
     })
@@ -82,22 +80,15 @@ if (darab > 0) {
     })
     .then(data => {
         console.log('Movie removed successfully:', data);
-        // Refresh the page
         window.location.reload();
     })
     .catch(error => {
         console.error('Error:', error);
-        // Handle errors if the request fails
     });
 }
-
 }else{
   window.location.href = "./main.php";
 }
-
-    
-
-    
 </script>
 </body>
 </html>
