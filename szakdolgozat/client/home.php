@@ -38,6 +38,12 @@
             <div class="row" id="popularity" class="col-md-2">
               <p></p>
             </div>
+            <div class="row" id="datum" class="col-2">
+              <p></p>
+            </div>
+            <div class="row" id="rating" class="col-2">
+              <p></p>
+            </div>
           </div>
     </div>
           <div class="modal-footer">
@@ -81,7 +87,9 @@ function showModal(button) {
     document.getElementById('movieInfo').innerHTML = data.overview
     document.getElementById('popularity').innerHTML = "Popularity: " + data.popularity
     document.getElementById('poster').innerHTML = `<img src="${modalPoster}" class="img-fluid" id="poster">`
-
+    document.getElementById('datum').innerHTML = "Released in: " + data.release_date
+    document.getElementById('rating').innerHTML = "A total of " + data.vote_count + " people voted in an average of " + Math.floor(data.vote_average) + " out of 10"
+ 
     });
   }
 
